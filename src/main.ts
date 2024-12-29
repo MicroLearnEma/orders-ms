@@ -6,9 +6,9 @@ import { HttpStatus, ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
-    transport: Transport.TCP,
+    transport: Transport.NATS,
     options: {
-      port: env.port
+      servers: env.nats_servers
     }
   });
   app.useGlobalPipes(
